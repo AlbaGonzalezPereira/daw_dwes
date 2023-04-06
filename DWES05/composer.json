@@ -1,0 +1,27 @@
+{
+    "name": "alba/dwes05",
+    "description": "Tarea 05 DWES",
+    "type": "project",
+    "license": "GPL",
+    "config": {
+        "optimize-autoloader": true,
+        "allow-plugins": {
+            "kylekatarnls/update-helper": true
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "Clases\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Alba"
+        }
+    ],
+    "require": {
+        "philo/laravel-blade": "^3.1",
+        "milon/barcode": "^6.0",
+        "fzaninotto/faker": "^1.5"
+    }
+}
