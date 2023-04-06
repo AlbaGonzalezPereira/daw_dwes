@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Función que calcula la serie Fibonacci de la posición de un número
  */
@@ -11,8 +10,10 @@ function calcularFibonacciRecursiva ($termino) {
     }
 }
 
-//función que calcula los puntos que hay que añadir a cada número de la serie fibonacci, que se guardarán
-//en un array
+/**
+ * función que calcula los puntos que hay que añadir a cada número de la serie fibonacci, 
+ * que se guardarán en un array
+ */
 function calcularPuntos($fibos,$max){
     $fibosFinal = [];
     $numPuntos;
@@ -28,7 +29,6 @@ function calcularPuntos($fibos,$max){
 }
 ?>
 
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -38,15 +38,9 @@ function calcularPuntos($fibos,$max){
     <title>DWES-PHP-B02-09</title>
 </head>
 <body >
-
     <form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="get">
+
 <?php
-
-    
-
-
-    
-
     $entero = empty($_GET['entero']) ? "": intval($_GET['entero']);
     echo <<<MARCA
     <p>
@@ -64,7 +58,8 @@ if(!isset($_GET['reset'])){ //para que funcione el reset. Si nos da igual lo sac
         $segundaVez = true;
     }
 
-    if ( $entero === "" || $entero < 1 || $entero > 8 )  {  // el html también se encarga de comprobar rango, pero lo hacemos para asegurarnos
+    // el html también se encarga de comprobar rango, pero lo hacemos para asegurarnos
+    if ( $entero === "" || $entero < 1 || $entero > 8 )  {  
         if ($segundaVez) {
             echo <<<MARCA
             <p style="color: red">¡¡Introduzca el entero solicitado (1-8), por favor!!</p>
