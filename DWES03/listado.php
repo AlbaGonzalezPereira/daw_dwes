@@ -36,7 +36,7 @@ while ($registro = $resultado->fetch()) {
     <td>".$registro['id']."</td><td>".$registro['nombre']."</td>
     <td>
     <form action='borrar.php' method='post'>
-    <a href='./update.php?id=".$registro['id']."'><button type='button' class='btn btn-warning'>Actualizar</button></a>
+    <a href='./update.php?id=".$registro['id']."'><button type='button' class='btn btn-warning me-4'>Actualizar</button></a>
     <button type='submit' class='btn btn-danger'>Borrar</button>
     <input type='hidden' name='id' value='".$registro['id']."'/> 
     </form>
