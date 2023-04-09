@@ -9,6 +9,7 @@ En la parte superior de la página web se mostrará el contenido de la agenda.
 <div align = center><img src="https://github.com/AlbaGonzalezPereira/daw_dwes/blob/main/DWES02/imaxes/img3.JPG" alt="Formulario" style = "width: 60%"></div>
 <br>
 En la parte inferior debe figurar un sencillo formulario con dos cuadros de texto, uno para el nombre y otro para el número de teléfono.
+
 <br>
 <div align = center><img src="https://github.com/AlbaGonzalezPereira/daw_dwes/blob/main/DWES02/imaxes/img1.JPG" alt="Formulario" style = "width: 60%"></div>
 <br>
