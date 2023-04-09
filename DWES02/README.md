@@ -16,7 +16,7 @@ En la parte inferior debe figurar un sencillo formulario con dos cuadros de text
 Cada vez que se envíe el formulario:
 
 * Si el nombre está vacío, se mostrará una advertencia.
-<center><image src="https://github.com/AlbaGonzalezPereira/daw_dwes/blob/main/DWES02/imaxes/img2.JPG" alt="Advertencia" style = "width: 60%"></center>
+<div style="text-align: center;"><image src="https://github.com/AlbaGonzalezPereira/daw_dwes/blob/main/DWES02/imaxes/img2.JPG" alt="Advertencia" style = "width: 60%"></div>
 
 * Si el nombre que se introdujo no existe en la agenda, y el número de teléfono no está vacío, se añadirá a la agenda.
 * Si el nombre que se introdujo ya existe en la agenda y se indica un número de teléfono, se sustituirá el número de teléfono anterior.
