@@ -6,7 +6,7 @@ Deseamos diseñar una aplicación para gestionar los **jugadores** de un equipo 
 
 Se deja el enlace a "``tablas.sql``" con lo necesario para crear la base de datos, dar a **gestor** permiso en ella y crear la tabla **jugadores**.
 
-[Archivo SQL]: https://github.com/AlbaGonzalezPereira/daw_dwes/blob/main/DWES05/sql/DWES05_TAR_R01_tabla.sql "Archivo sql"
+[Archivo SQL](#https://github.com/AlbaGonzalezPereira/daw_dwes/blob/main/DWES05/sql/DWES05_TAR_R01_tabla.sql)
 
 De los jugadores guardaremos nombre y apellidos, una posición, un número de dorsal (único) y un código de barras obligatorio único para cada uno.
 
