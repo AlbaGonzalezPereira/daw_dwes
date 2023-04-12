@@ -21,34 +21,32 @@ if (!empty($_POST)) {
 <html lang="es">
 <head>
 	<meta charset="utf-8" />
-	<title>Campaña de Crowdfunding </title>
+	<title>Campaña de Crowdfunding</title>
 	<link href="styles.css" rel="stylesheet" type="text/css" />
 </head>
 
 <body>
 
-	<h1>Campaña de Crowdfunding </h1>
+	<h1>Campaña de Crowdfunding</h1>
 	
 	<h2>Realizado por: <strong>Alba María González Pereira</strong></h2>
-
-	
 
 	<table class="conborde">
 		<tr><th>NOMBRE</th> <th>CANTIDAD</th></tr>
 		<?php
-                    //Creamos e iniciamos a 0 la variable que acumulará el total donado.
-                    //Insertamos en la tabla las donaciones y calculamos el total.
+            //Creamos e iniciamos a 0 la variable que acumulará el total donado.
+            //Insertamos en la tabla las donaciones y calculamos el total.
    
-                        $total = 0;
-                        foreach($storage as $nombre => $cantidad) {
-                            print '<tr>';
-                            print '<td>' . $nombre . '</td>';
-                            print '<td>' . $cantidad . '</td>';
-                            print '</tr>';
+            $total = 0;
+            foreach($storage as $nombre => $cantidad) {
+                print '<tr>';
+                print '<td>' . $nombre . '</td>';
+                print '<td>' . $cantidad . '</td>';
+                print '</tr>';
 
-                            $total = $total + $cantidad;
-                        }
-                    ?>
+                $total = $total + $cantidad;
+            }
+        ?>
 	</table>
 
 	<p>Total recaudado: <span class="grande"><?php print $total ?> €</span></p>
@@ -64,7 +62,6 @@ if (!empty($_POST)) {
 			<?php
 			if(isset($nombre)&&isset($donar)&&!isset($storage[$nombre])&& empty($cantidad))
 				echo"<span style='color:red'> &lt; -- Debe introducir una cantidad para donar!!</span>"
-			
 			?>
 		</p>
 		
