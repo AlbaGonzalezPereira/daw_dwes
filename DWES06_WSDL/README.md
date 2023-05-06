@@ -1,13 +1,7 @@
-Esta carpeta contiene una **versión a "cero"** de diversos ejercicios:
-1. En varios hay que hacer "**composer update**"
-2. Corregir el bug de wsdl2phpgenerator  (ver AVISO.txt)
-3. Generar las clases (wsdl2phpgenerator) o/y el wsdl (php2wsdl)
-4. Cambiar el nombre de la carpeta raiz por dwes_tema_06_blanco y lanzarlo desde la raiz del servidor web.
----
-## PASOS A SEGUIR
+## PASOS PARA LA REALIZACIÓN DE LA TAREA
 * Arrancamos el XAMPP.
 
-* Primero buscamos **información sobre la extensión SOAP** de PHP en el entorno de línea de comandos (CMD) que contengan la cadena de texto "soap". Nos interesa saber si la caché está en off o a 0. Se comprueba con el siguiente comando en la terminal:
+* Primero buscamos **información sobre la extensión SOAP** de PHP en el entorno de línea de comandos (CMD) que contenga la cadena de texto "soap". Nos interesa saber si la caché está en off o a 0. Se comprueba con el siguiente comando en la terminal:
 ```bash
 php -i | findstr /I "soap"
 ```
@@ -27,11 +21,13 @@ Hay que fijarse que la caché esté en off, que nos lo dirá la siguiente línea
 soap.wsdl_cache_enabled => Off => Off
 ```
 
-* Tenemos que comprobar que en ``php.ini`` (C:\xampp\php) la extensión soap tiene que estar descomentada ``extension=soap`` y la cache tiene que estar en Off ``soap.wsdl_cache_enabled=0``. Volvemos a comprobar que está todo bien con el comando anterior.
+* Tenemos que comprobar que en ``php.ini`` (C:\xampp\php) la extensión soap tiene que estar **descomentada** ``extension=soap`` y la caché tiene que estar en **Off**, es decir, de la siguiente manera: ``soap.wsdl_cache_enabled=0``. 
+
+* Volvemos a comprobar que está todo bien con el comando ``php -i | findstr /I "soap"``.
 
 * Si tenemos que realizar los cambios anteriores, tenemos que **reiniciar el XAMPP**.
 
-* Si el proyecto no tiene un ``composer.json``, haremos un ``composer init`` y para ello seguiremos los pasos de instalación de Composer que se puede encontrar en el [pdf](https://github.com/AlbaGonzalezPereira/daw_dwes/blob/main/INSTALACI%C3%93N%20DE%20COMPOSER.pdf) de la tarea05, creando solo la carpeta vendor ya que a priori la carpeta caché no haría falta crearla. Dejando el ``composer.json`` de la siguiente manera:
+* Si el proyecto no tiene un ``composer.json``, haremos un ``composer init`` y para ello seguiremos los pasos de instalación de Composer que se puede encontrar en el [pdf](https://github.com/AlbaGonzalezPereira/daw_dwes/blob/main/DWES05_COMPOSER/INSTALACI%C3%93N%20DE%20COMPOSER.pdf) de la tarea05, creando solo la carpeta vendor ya que a priori la carpeta caché no haría falta crearla. Dejando el ``composer.json`` de la siguiente manera:
 ```json
 {
     "name": "alba/tarea6",
@@ -56,27 +52,40 @@ soap.wsdl_cache_enabled => Off => Off
 ```
 
 * Si el proyecto ya tiene un ```composer.json``` y queremos modificarle el name o los authors, habría que eliminar el ```composer.lock```, hacer los cambios y después un ```composer update```.
+```bash
+ "name": "alba/tarea6",
+```
 
 * Para **instalar las dependencias** que nos sean necesarias, lo haremos con **composer require**, que se instalarán dentro de require.
 
-    En esta tarea, tenemos que instalar la **dependencia PHP2WSDL** en el proyecto, que nos va a permitir generar WSDL (Web Services Description Language) a partir de código PHP. 
+    En esta tarea, tenemos que instalar dos dependencias en el proyecto: 
+    * **php2wsdl**, que nos va a permitir generar WSDL (Web Services Description Language) a partir de código PHP, 
+    * **wsdl2phpgenerator**, la cual permite generar código PHP a partir de un archivo WSDL. La biblioteca se encarga de analizar el archivo WSDL y **generar clases y métodos** en PHP que se corresponden con los servicios web y los métodos descritos en el archivo WSDL. 
+
+    En ambos casos, **Composer** genera un archivo ``composer.json`` y un archivo ``composer.lock`` que especifican las versiones exactas de las dependencias instaladas para asegurar la compatibilidad del proyecto.
 
     ```bash
-    #Instalamos la biblioteca PHP2WSDL en el proyecto
+    #Instalamos la biblioteca php2wsdl en el proyecto
     composer require php2wsdl/php2wsdl
     ```
 
-    También tenemos que instalar la dependencia **wsdl2phpgenerator**, la cual permite generar código PHP a partir de un archivo WSDL. La biblioteca se encarga de analizar el archivo WSDL y generar clases y métodos en PHP que se corresponden con los servicios web y los métodos descritos en el archivo WSDL.
     ```bash
     #Instalamos la biblioteca wsdl2phpgenerator en el proyecto actual 
     composer require wsdl2phpgenerator/ wsdl2phpgenerator
     ```
 
-    En ambos casos, Composer genera un archivo ``composer.json`` y un archivo ``composer.lock`` que especifican las versiones exactas de las dependencias instaladas para asegurar la compatibilidad del proyecto.
-
     Cuando instalemos la dependencia del wsdl2phpgenerator **TENEMOS QUE COMENTAR** las líneas **156-158** del fichero **vendor\wsdl2phpgenerator\lib\PhpClass.php** ya que tiene un bug y hacerlo cada vez que hagamos un composer update ya que genera un archivo nuevo.
 
- * Una vez realizado todo lo anterior, creamos la estructura de carpetas del proyecto, si no nos la dieran.
+    Quedando finalmente **"require": {}** en el archivo de composer.json de la siguiente manera:
+
+    ```bash
+    "require": {
+        "php2wsdl/php2wsdl": "^0.6.1",
+        "wsdl2phpgenerator/wsdl2phpgenerator": "^3.4"
+    }
+    ```
+
+ * Una vez realizado todo lo anterior, creamos la **estructura de carpetas** del proyecto, si no nos la dieran.
 
 * Después, importamos la estructura de **base de datos** y los datos de la misma, que estarán guardadas en la carpeta ``sql``.
 
