@@ -211,7 +211,7 @@ class Operaciones
 }
 ```
 
-* En la carpeta servidorSoap tendremos el ``servicio.php``, del que haremos una copia y le llamaremos ``servicioW.php``, que tendrá la ruta del archivo wsdl, en nuestro caso ``servicio.wsdl``.
+* En la carpeta servidorSoap tendremos el ``servicio.php``, del que haremos una **copia** y le llamaremos ``servicioW.php``, que contendrá la **ruta del archivo wsdl**, en nuestro caso ``servicio.wsdl``.
 
 ```php
 <?php
@@ -234,7 +234,7 @@ try {
 
 * Generamos las clases con ``generarClases.php``, también **solo una vez**, que en este caso nos genera la clase ``ClasesOperacionesService.php``. En caso de darle dos veces nos haría una copia, añadiendo Customize al final. Se generan de manera similar al wsdl, pero escogiendo el archivo ``generarClases.php``.
 
-* En caso de querer **volver a generarlos**, o queremos añadir o modificar alguna funcionalidad, tenemos que eliminar el wsdl y las clases previas generadas y volver a generar el wsdl y las clases.
+* En caso de querer **volver a generarlos**, o si queremos **añadir o modificar alguna funcionalidad**, tenemos que eliminar el wsdl y las clases previas generadas con ``generarClases.php`` y volver a generar el wsdl y las clases.
 
 ```bash
 /**
@@ -247,7 +247,7 @@ public function getTlfTienda($nombre)
 {
     $tienda = new Tienda();//creamos un objeto de la clase Tienda
     //$tienda->setNombre($nombre);
-    $telf = $tienda->getTelf($nombre);//lama a la función getTelf
+    $telf = $tienda->getTelf($nombre);//llama a la función getTelf
     $tienda = null;//cierra la consulta
     return $telf;//devuelve el teléfono
 }
