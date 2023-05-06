@@ -13,7 +13,8 @@
     },
     "authors": [
         {   
-            "name": "Alba María González Pereira"
+            "name": "Alba María González Pereira",
+            "email": "alba_gonzalezpereira@gmail.com"
         }
     ],
     "require": {
