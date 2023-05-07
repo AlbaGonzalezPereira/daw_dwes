@@ -21,13 +21,15 @@ Hay que fijarse que la caché esté en off, que nos lo dirá la siguiente línea
 soap.wsdl_cache_enabled => Off => Off
 ```
 
-* Tenemos que comprobar que en ``php.ini`` (C:\xampp\php) la extensión soap tiene que estar **descomentada** ``extension=soap`` y la caché tiene que estar en **Off**, es decir, de la siguiente manera: ``soap.wsdl_cache_enabled=0``. 
+En caso de que no nos aparezca nada o no esté la caché en Off, haremos las siguientes comprobaciones:
 
-* Volvemos a comprobar que está todo bien con el comando ``php -i | findstr /I "soap"``.
+* Comprobaremos que en ``php.ini`` (C:\xampp\php) la extensión soap esté **descomentada** ``extension=soap`` y la caché esté en **Off**, es decir, de la siguiente manera: ``soap.wsdl_cache_enabled=0``. 
 
-* Si tenemos que realizar los cambios anteriores, tenemos que **reiniciar el XAMPP**.
+* Una vez realizado lo anterior, volvemos a comprobar que está todo bien con el comando ``php -i | findstr /I "soap"``.
 
-* Si el proyecto no tiene un ``composer.json``, haremos un ``composer init`` y para ello seguiremos los pasos de instalación de Composer que se puede encontrar en el [pdf](https://github.com/AlbaGonzalezPereira/daw_dwes/blob/main/DWES05_COMPOSER/INSTALACI%C3%93N%20DE%20COMPOSER.pdf) de la tarea05, creando solo la carpeta vendor ya que a priori la carpeta caché no haría falta crearla. Dejando el ``composer.json`` de la siguiente manera:
+Si tenemos que realizar los cambios anteriores, tenemos que **reiniciar el XAMPP**.
+
+* Si el proyecto no tiene un ``composer.json``, haremos un ``composer init`` y para ello seguiremos los pasos de instalación de Composer que se puede encontrar en el [pdf](https://github.com/AlbaGonzalezPereira/daw_dwes/blob/main/DWES05_COMPOSER/INSTALACI%C3%93N%20DE%20COMPOSER.pdf) de la tarea05, creando solo la carpeta vendor ya que, a priori, la carpeta caché no haría falta crearla. El archivo ``composer.json`` debería estar de la siguiente manera:
 ```json
 {
     "name": "alba/tarea6",
@@ -51,7 +53,7 @@ soap.wsdl_cache_enabled => Off => Off
     "require": {}
 ```
 
-* Si el proyecto ya tiene un ```composer.json``` y queremos modificarle el name o los authors, habría que eliminar el ```composer.lock```, hacer los cambios y después un ```composer update```.
+* Si el proyecto ya tiene un ```composer.json``` y queremos modificarle el **name** o los **authors**, habría que eliminar el ```composer.lock```, hacer los cambios y después realizar un ```composer update```.
 ```bash
  "name": "alba/tarea6",
 ```
@@ -137,7 +139,7 @@ class Conexion
 }
 ```
 
-* Tendremos también una clase ``Operaciones.php`` o similar, en la cual tendremos la funcionalidad del servicio web, es decir, el conjunto de **métodos disponibles**. Dentro de la clase ``Operaciones.php`` en cada método creamos objetos de otras clases y llamamos a sus métodos para recoger los datos. No hay que olvidarse de que **los comentarios** en esta clase deben seguir una **estructura específica** para poder generar el wsdl sin errores.
+* Tendremos también una clase ``Operaciones.php`` o similar, en la cual tendremos la funcionalidad del servicio web, es decir, el conjunto de **métodos disponibles**. Dentro de la clase ``Operaciones.php``, en cada método creamos objetos de otras clases y llamamos a sus métodos para recoger los datos. No hay que olvidarse de que **los comentarios** en esta clase deben seguir una **estructura específica** para poder generar el wsdl sin errores.
 
 ```php
 <?php
@@ -234,9 +236,9 @@ try {
 
 * Generamos las clases con ``generarClases.php``, también **solo una vez**, que en este caso nos genera la clase ``ClasesOperacionesService.php``. En caso de darle dos veces nos haría una copia, añadiendo Customize al final. Se generan de manera similar al wsdl, pero escogiendo el archivo ``generarClases.php``.
 
-* En caso de querer **volver a generarlos**, o si queremos **añadir o modificar alguna funcionalidad**, tenemos que eliminar el wsdl y las clases previas generadas con ``generarClases.php`` y volver a generar el wsdl y las clases.
+* En caso de querer **volver a generarlos**, o si queremos **añadir o modificar alguna funcionalidad**, tendremos que eliminar el wsdl y las clases previas generadas con ``generarClases.php`` y volver a generar el wsdl y las clases, como ya se explicó en puntos previos.
 
-```bash
+```php
 /**
  * Devuelve un string con el teléfono de la tienda o null
  * @soap
