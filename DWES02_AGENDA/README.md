@@ -1,4 +1,4 @@
-## **ENUNCIADO**
+## **ENUNCIADO TAREA02**
 
 Debes programar una aplicación para mantener una pequeña agenda en una única página web programada en PHP.
 

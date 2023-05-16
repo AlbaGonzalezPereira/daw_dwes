@@ -1,4 +1,4 @@
-## Enunciado
+## **ENUNCIADO TAREA04**
 Tienes que programar una aplicación web sencilla que permita gestionar una serie de preferencias del usuario. La aplicación se dividirá en dos páginas:
 
 * ``preferencias.php``. Permitirá al usuario escoger sus preferencias y las almacenará en la sesión del usuario.
