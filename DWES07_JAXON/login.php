@@ -1,5 +1,6 @@
 <?php
 require (__DIR__ . '/include/Validar.php');
+require (__DIR__ . '/include/Registrar.php');
 
 use function Jaxon\jaxon;
 
@@ -21,6 +22,8 @@ if($jaxon->canProcessRequest())  $jaxon->processRequest();
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
     <title>Formulario JAXON</title>
     <script type="text/javascript" src="validar.js"></script>
+    <script type="text/javascript" src="registrar.js"></script>
+
 
 </head>
 
@@ -49,6 +52,8 @@ if($jaxon->canProcessRequest())  $jaxon->processRequest();
                         </div>
                         <div class="form-group">
                             <input type="submit" value="Validar" class="btn float-right btn-info" name='enviar' id="enviar">
+                            <!--Añadimos el botón registrar para poder registrar usuarios-->
+                            <button value="Registrar" class="btn float-right btn-success mx-2" name="registrar" id="registrar" onclick="registrarUsuario();return false;">Registrar</button>
                         </div>
                     </form>
                 </div>

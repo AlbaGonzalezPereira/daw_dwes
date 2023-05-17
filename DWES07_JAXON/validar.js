@@ -10,10 +10,16 @@ function envForm() {
     return false;
 }
 
+/**
+ * Función que nos cargará listado.php en la misma ventana o pestaña actual del navegador
+ */
 function validado() {
     window.open("listado.php", "_self");
 }
 
+/**
+ * Función que lanza una alerta cuando el usuario o la contraseña no son válidos
+ */
 function noValidado() {
     alert("¡¡Usuario o contraseña no válidos!!!");
 }

@@ -1,5 +1,5 @@
 <?php
-
+//cierra una sesión
 session_start();
 
 if (isset($_SESSION['usu'])) unset($_SESSION['usu']);//si existe la sesión de usuario la elimina
