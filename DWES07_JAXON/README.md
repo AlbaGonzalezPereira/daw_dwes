@@ -23,4 +23,4 @@ Fíjate en el vídeo siguiente, podrás comprobar que están activadas las opcio
 
 En el "``onclick``" de botón botar llamaremos a la función "``JavaScript``" que se encargará de llamar a los métodos ``PHP`` ya mencionados
 
-Guión con la tabla "``votos``" para añadir a la base de datos "``proyecto``": [Descargar]()
+Guión con la tabla "``votos``" para añadir a la base de datos "``proyecto``": [Descargar](https://github.com/AlbaGonzalezPereira/daw_dwes/blob/main/DWES07_JAXON/sql/tablavotos.sql)

@@ -7,7 +7,7 @@ A continuación utilizarás ``"PHP SOAP"`` para crear un servicio web con cuatro
 
 Échale un vistazo a la estructura de la práctica propuesta para que te hagas un primera idea de los archivos que se piden.
 
-Para la base de datos se deja en un archivo comprimido los archivos para crear la base de datos ``"tarea6"`` y sus tablas, y el archivo para guardar datos de ejemplos para las tablas: [Archivos] ()
+Para la base de datos se deja en un archivo comprimido los archivos para crear la base de datos ``"tarea6"`` y sus tablas, y el archivo para guardar datos de ejemplos para las tablas: [Archivos] (https://github.com/AlbaGonzalezPereira/daw_dwes/tree/main/DWES06_WSDL/dwes_tema_06_alba/TAREA_06/sql)
 
 Tendremos las carpetas:
 
@@ -19,7 +19,7 @@ Tendremos las carpetas:
 Para esta práctica se pedirá ``"autoload"`` de las clases, ``"php2wsdl"`` y ``"wsdl2phpgenerator"``, todo instalado con ``"Composer"``.
 
 
-* Crearemos el servidor SOAP ``"servicio.php"`` en la carpeta ``"servidorSoap"``. Este servicio no tendrá asociado ningún archivo WSDL y ofrecerá las funciones siguientes (Todas implementadas en "src/Operaciones.php"):
+* Crearemos el servidor SOAP ``"servicio.php"`` en la carpeta ``"servidorSoap"``. Este servicio no tendrá asociado ningún archivo WSDL y ofrecerá las funciones siguientes (Todas implementadas en ``"src/Operaciones.php"``):
     * ``getPVP``. Esta función recibirá como parámetro el código de un producto, y devolverá el PVP correspondiente al mismo.
     * ``getStock``. Esta función recibirá dos parámetros: el código de un producto y el código de una tienda. Devolverá el stock existente en dicha tienda del producto.
     * ``getFamilias``. No recibe parámetros y devuelve un array con los códigos de todas las familias existentes.
