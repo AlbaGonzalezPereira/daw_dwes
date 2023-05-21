@@ -4,6 +4,7 @@ require '../vendor/autoload.php';
 
 
 // $redirect_uri = 'http://' . $_SERVER['HTTP_HOST'] . $_SERVER['PHP_SELF'];
+//modificamos la ruta de la carpeta de donde partimos para hacer la tarea por la siguiente:
 $redirect_uri = 'http://localhost/DWES08_BINGMAPS_GOOGLETASK/TAREA_08/public/repartos.php';
 include("../../claves.inc.php");
 

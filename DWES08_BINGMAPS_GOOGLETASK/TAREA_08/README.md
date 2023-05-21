@@ -42,6 +42,11 @@ $miCiudad   = "Pontevedra";
     ],
 ```
 
+5. Modificación en el archivo de ``Tasks.php`` de la uri, en la que he agregado la carpeta renombrada:
+```php
+$redirect_uri = 'http://localhost/DWES08_BINGMAPS_GOOGLETASK/TAREA_08/public/repartos.php';
+```
+
 ### FUNCIONALIDADES AÑADIDAS:
 
 1. Se ha añadido una funcionalidad en ``repartos.php`` para que no tenga que recargar la página al ocultar el Orden:
