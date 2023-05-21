@@ -13,7 +13,7 @@
   //(QUITAR DOLAR al inicioourl, como es lógico)
   ```
 
-2. Modificación de las claves del Bing Maps y de Google Task en el archivo ``claves.inc.php``:
+2. Modificación de las **claves de Bing Maps** y de Google Task en el archivo ``claves.inc.php``:
 ```php
 //clave bing generada
 $keyBing = "AvnkD-oufg5_jF9ZKSKelKwOchYW1bsjd-V1hynvL5edd-TIcQM-oGAGZUuwu_Qw";  
@@ -23,14 +23,14 @@ $googleClientId     = '891197018098-vrqtebkp7o7mo6idsbdaptg9f9m7ups9.apps.google
 $googleClientSecret = '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'; 
 ```
 
-3. Modificación de las coordenadas del almacén, así como su ubicación en el archivo ``config.inc.php``:
+3. Modificación de las **coordenadas del almacén**, así como su ubicación en el archivo ``config.inc.php``:
 ```php
 <?php
 //configuramos las coordenadas donde se halla el almacén
 $corAlmacen = "42.42972,-8.643261";  //Calle de la Peregrina 25, 36001 Pontevedra
 $miCiudad   = "Pontevedra";
 ```
-4. Modificación en el archivo ``composer.json``:
+4. Modificación de **authors** y **name** en el archivo ``composer.json``:
 ```bash
 "name": "alba/tarea8",
 
@@ -42,11 +42,11 @@ $miCiudad   = "Pontevedra";
     ],
 ```
 
-5. Modificación en el archivo de ``Tasks.php`` de la uri, en la que he agregado la carpeta renombrada:
+5. Modificación de la **uri** en el archivo de ``Tasks.php``, en la que he agregado la carpeta renombrada:
 ```php
 $redirect_uri = 'http://localhost/DWES08_BINGMAPS_GOOGLETASK/TAREA_08/public/repartos.php';
 ```
-
+---
 ### FUNCIONALIDADES AÑADIDAS:
 
 1. Se ha añadido una funcionalidad en ``repartos.php`` para que no tenga que recargar la página al ocultar el Orden:
@@ -82,9 +82,9 @@ $(document).ready(function() {
   }
 ```
 
-3. Se ha añadido una funcionalidad en el archivo ``mapas.php`` de que en caso de que exista el Street View de la coordenada,** muestre la imagen del sitio** donde va a realizar el reparto en un div debajo de la otra imagen y sino que muestre lo que contiene el atributo ``"alt"``.
+3. Se ha añadido una funcionalidad en el archivo ``mapas.php`` para que, en caso de que exista el Street View de la coordenada, **muestre la imagen del sitio** donde va a realizar el reparto en un ``div`` debajo de la otra imagen y, sino, que muestre lo que contiene el atributo ``"alt"``.
 
-Esto lo hacemos debajo de la función de ``loadMapScenario()``, añadiendo el siguiente código que nos va a generar la url con las coordenadas del Street View:
+Esto lo hacemos debajo de la función de ``loadMapScenario()``, añadiendo el siguiente **código** que nos va a generar la url con las coordenadas del Street View:
 ```php
 let map2=`https://dev.virtualearth.net/REST/v1/Imagery/Map/Streetside/${lat},${lon}?zoomlevel=3&heading=145&pitch=5&mapSize=350,350&key=AvnkD-oufg5_jF9ZKSKelKwOchYW1bsjd-V1hynvL5edd-TIcQM-oGAGZUuwu_Qw`;
 console.log(map2);
