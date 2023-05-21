@@ -62,7 +62,7 @@ En la línea 222 hemos añadido el id="orden"
 //añadimos el id="orden" para poder ocultar el elemento al llamarlo con el botón
 echo "<div id='orden' class='container mt-2 mb-2' style='font-size:0.8rem'>";
 ```
-2. Se ha añadido la funcionalidad de Ver Orden en el archivo ``funciones.js``, que nos va a cambiar el estilo, el icono y el texto del botón.
+2. Se ha añadido la funcionalidad de **Ver Orden** en el archivo ``funciones.js``, que nos va a cambiar el estilo, el icono y el texto del botón.
 ```javascript
 $(document).ready(function() {
     $('#ocultar').click(function() {//al darle clic en el elemento con id="ocultar"
@@ -82,10 +82,9 @@ $(document).ready(function() {
   }
 ```
 
-3. Se ha añadido una funcionalidad en el archivo ``mapas.php`` de que en caso de que exista el Street View de la coordenada, muestre la imagen del sitio donde va a realizar el reparto en un div debajo de la otra imagen.
+3. Se ha añadido una funcionalidad en el archivo ``mapas.php`` de que en caso de que exista el Street View de la coordenada,** muestre la imagen del sitio** donde va a realizar el reparto en un div debajo de la otra imagen y sino que muestre lo que contiene el atributo ``"alt"``.
 
-
-Debajo de la función de loadMapScenario() añadimos el siguiente código que nos va a generar la url con las coordenadas del Street View
+Esto lo hacemos debajo de la función de ``loadMapScenario()``, añadiendo el siguiente código que nos va a generar la url con las coordenadas del Street View:
 ```php
 let map2=`https://dev.virtualearth.net/REST/v1/Imagery/Map/Streetside/${lat},${lon}?zoomlevel=3&heading=145&pitch=5&mapSize=350,350&key=AvnkD-oufg5_jF9ZKSKelKwOchYW1bsjd-V1hynvL5edd-TIcQM-oGAGZUuwu_Qw`;
 console.log(map2);
