@@ -16,11 +16,11 @@
 2. Modificación de las **claves de Bing Maps** y de Google Task en el archivo ``claves.inc.php``:
 ```php
 //clave bing generada
-$keyBing = "AvnkD-oufg5_jF9ZKSKelKwOchYW1bsjd-V1hynvL5edd-TIcQM-oGAGZUuwu_Qw";  
+$keyBing = "xxxxxxxxxxxx";  
 
 //claves que me proporcionaste
-$googleClientId     = '891197018098-vrqtebkp7o7mo6idsbdaptg9f9m7ups9.apps.googleusercontent.com'; 
-$googleClientSecret = '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'; 
+$googleClientId     = 'xxxxxxxxxxxxxxx'; 
+$googleClientSecret = 'xxxxxxxxxxxxxxx'; 
 ```
 
 3. Modificación de las **coordenadas del almacén**, así como su ubicación en el archivo ``config.inc.php``:
@@ -37,7 +37,7 @@ $miCiudad   = "Pontevedra";
 "authors": [
         {
             "name": "Alba",
-            "email": "alba_gonzalezpereira@hotmail.com"
+            "email": "alba@hotmail.com"
         }
     ],
 ```
