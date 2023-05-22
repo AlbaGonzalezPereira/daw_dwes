@@ -6,8 +6,8 @@ $keyAEMET = "nopormuchomadrugaramanecemastempranonopormuchomadrugaramanecemastem
 $keyOpenWeatherMap  = '0101010100101001010100101001100';  
 
 //clave bing generada
-$keyBing = "*****verTareahtcdocs******";  
+$keyBing = "*****verTareahtdocs******";  
 
 //claves que me proporcionaste
-$googleClientId     = '******verTareahtcdocs*****'; 
-$googleClientSecret = '******verTareahtcdocs*****'; 
+$googleClientId     = '******verTareahtdocs*****'; 
+$googleClientSecret = '******verTareahtdocs*****'; 
