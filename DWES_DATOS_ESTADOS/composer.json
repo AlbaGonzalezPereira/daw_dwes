@@ -1,0 +1,20 @@
+{
+    "name": "alba/tarea07",
+    "description": "tarea07 dwes",
+    "type": "project",
+    "license": "GPL",
+    "autoload": {
+        "psr-4": {
+            "Clasescomp\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "alba"
+        }
+    ],
+    "require": {
+        "jaxon-php/jaxon-core": "~4.0",
+        "jaxon-php/jaxon-js": "*"
+    }
+}
