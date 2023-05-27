@@ -14,7 +14,7 @@ $jaxon->setOption('core.debug.on', false);
 $jaxon->setOption('core.debug.verbose', false);
 
 /**
- * Función que valida el usuario y la contraseña y almacenar el nombre de usuario en la sesión de PHP.
+ * Función que valida el usuario y la contraseña y almacena el nombre de usuario en la sesión de PHP.
  * @param $u,$p - usuario y contraseña
  */
 function cUsuario($u, $p)  {

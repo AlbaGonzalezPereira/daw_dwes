@@ -87,4 +87,15 @@ class ClasesOperacionesService extends \SoapClient
       return $this->__soapCall('getTlfTienda', array($nombre));
     }
 
+    /**
+     * Función que devuelve la suma (montante) de los productos de una familia. IMPORTANTE!!!!
+     *
+     * @param string $codT
+     * @return string
+     */
+    public function getmontante($codT)
+    {
+      return $this->__soapCall('getmontante', array($codT));
+    }
+
 }

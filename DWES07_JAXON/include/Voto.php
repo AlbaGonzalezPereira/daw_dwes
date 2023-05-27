@@ -36,7 +36,7 @@ class Voto extends Conexion {
     }
 
     /**
-     * Función que inserta un voto de usuario en un producto con una cantidad de estrellas
+     * Función que inserta un voto de usuario en un producto
      */
     public function create() {
         $i = "insert into votos(cantidad, idPr, idUs) values(:c, :ip, :iu)";//consulta
@@ -51,6 +51,24 @@ class Voto extends Conexion {
         } catch (PDOException $ex) {
             die("Error al guardar voto: " . $ex->getMessage());//en caso de error, muestra el mensaje
         }
+    }
+
+    /**
+     * Función que elimina el voto de un producto que ha hecho un usuario --> FUNCIÓN AÑADIDA
+     */
+    public function delete(){
+        $i="delete from votos where idPr = :p and idUs = :iu";//consulta
+        $stmt = self::$conexion->prepare($i);
+
+        try {
+            $stmt->execute([//ejecuta
+                ':p'  => $this->idPr,
+                ':iu' => $this->idUs
+            ]);
+        } catch (PDOException $ex) {
+            die("Error al borrar voto: " . $ex->getMessage());//en caso de error, muestra el mensaje
+        }
+
     }
 
     /**

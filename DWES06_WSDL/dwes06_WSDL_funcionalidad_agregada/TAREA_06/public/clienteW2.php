@@ -62,3 +62,8 @@ echo "<br>Unidades del producto de código $codP en la tienda de código $codT: 
 // funcion getTelf------------------------------------------------------------------------------
 $telefono = $objeto->getTlfTienda($nombre);
 echo"<br>Teléfono de la tienda $nombre es: $telefono";
+
+
+// funcion getMontante------------------------------------------------------------------------------
+$unidades = $objeto->getMontante($codT);
+echo"<br>El montante de la tienda de código $codT es: $unidades";

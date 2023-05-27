@@ -106,6 +106,8 @@ if($jaxon->canProcessRequest())  $jaxon->processRequest();
                     echo "</select>\n";
                     echo "</td><td>";
                     echo "<button class='btn btn-info' onclick=\"envVoto('{$usu}','{$item->id}')\">Votar</button>";
+                    //creamos un botón que nos permitirá borrar el voto y hacer reecuento de las estrellas. AÑADIDO
+                    echo "<button class='btn btn-danger mx-4' onclick=\"borrarVoto('{$usu}','{$item->id}')\">Borrar</button>";
                     echo "</td>\n";
                     echo "</tr>\n";
                 }

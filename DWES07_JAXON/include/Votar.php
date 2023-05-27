@@ -45,6 +45,36 @@ function miVoto($u, $p, $c) {
 }
 
 /**
+ * Función que elimina el voto de un usuario y vuelve a pintar las estrellas sin ese voto. FUNCIÓN AÑADIDA
+ */
+function miNoVoto($u, $p){
+    $resp = jaxon()->newResponse();//creamos una respuesta jaxon
+    $voto = new Voto();
+
+    if (!$voto->puedeVotar($u, $p)) {//si puedeVotar es falso, llama a todos esos métodos
+        $voto->setIdPr($p);
+        $voto->setIdUs($u);
+        $voto->delete();
+
+        if($voto->getTotalVotos($p)==0){
+            $estrellas = "Sin valorar";//aparezca "Sin Valorar"
+            $resp->assign("votos_$p", "innerHTML", $estrellas);//modifica el html poniendo el número de estrellas
+        }
+        else{
+            $total     = $voto->getTotalVotos($p); //llamamos al método getTotalVotos($p) de la clase Voto
+            $estrellas = "$total Valoraciones. ";//que nos introduzca el número de valoraciones
+            $datosRespuesta = array( 'pro' => $p, 'media' => $voto->getMedia($p));//para que obtenga la media
+            $resp->call('votoValido', $datosRespuesta);//llamamos a votoValido para que pinte las estrellas
+        }
+        
+    }else{
+        $resp->alert("No has votado aún!!");
+    }
+    $voto = null;//cierra la conexión
+    return $resp;//devuelve la respuesta jaxon
+}
+
+/**
  * función que dibuja las estrellas del producto seleccionado
  * @param $c,$p - cantidad y producto
  */
@@ -73,5 +103,6 @@ function pintarEstrellas($c, $p) {
 
 //se llaman a las funciones desde votar.js
 $jaxon->register(Jaxon::CALLABLE_FUNCTION, 'miVoto');
+$jaxon->register(Jaxon::CALLABLE_FUNCTION, 'miNoVoto');
 $jaxon->register(Jaxon::CALLABLE_FUNCTION, 'pintarEstrellas');
 

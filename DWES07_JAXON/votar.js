@@ -12,6 +12,15 @@ function envVoto(usu, pro) {
 }
 
 /**
+ * Función que borra o voto dun producto dun usuario rexistrado. FUNCIÓN AÑADIDA
+ * @param {*} usu 
+ * @param {*} pro 
+ */
+function borrarVoto(usu, pro) {    
+    jaxon_miNoVoto(usu, pro);
+}
+
+/**
  * Función que pintará estrellas si el voto es válido
  * @param {*} datos 
  */

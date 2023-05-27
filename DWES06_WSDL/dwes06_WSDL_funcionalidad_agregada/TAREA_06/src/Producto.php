@@ -145,6 +145,7 @@ class Producto extends Conexion
         }
         return $productos;//devuelve el array
     }
+
     /*
      * @param
      * @return float|null
@@ -160,5 +161,22 @@ class Producto extends Conexion
         }
         if ($stmt->rowCount() == 0) return null;
         return ($stmt->fetch(PDO::FETCH_OBJ))->pvp;//va a devolver uno
+    }
+
+    /**
+     * @param string $codT
+     * @return float|null
+     */
+    public function getMontante($codT){
+        $consulta = "select sum(stocks.unidades*productos.pvp) AS montante FROM stocks,productos WHERE stocks.producto=productos.id and stocks.tienda = :i";
+        $stmt = self::$conexion->prepare($consulta);
+        try {
+            $stmt->execute([':i' => $codT]);//ejecuta la conexión, sustituyendo en la consulta el valor por el atributo
+        } catch (\PDOException $ex) {
+            die("Error al recuperar el montante: " . $ex->getMessage());
+        }
+        if ($stmt->rowCount() == 0) return null;
+        return ($stmt->fetch(PDO::FETCH_OBJ))->montante;
+        //return ($stmt->fetch(PDO::FETCH_OBJ));--> es lo mismo que la anterior pero así no tenemos que poner montante en Operaciones.php
     }
 }

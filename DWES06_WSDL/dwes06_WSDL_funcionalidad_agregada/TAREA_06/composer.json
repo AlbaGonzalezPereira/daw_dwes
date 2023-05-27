@@ -1,5 +1,5 @@
 {
-    "name": "alba/tarea6",
+    "name": "david/tarea6",
     "description": "Practica Unidad6",
     "type": "project",
     "license": "gnu/gpl",
@@ -12,9 +12,9 @@
         }
     },
     "authors": [
-        {   
-            "name": "Alba María González Pereira",
-            "email": "alba_gonzalezpereira@gmail.com"
+        {
+            "name": "David García Cancio",
+            "email": "davidgaca@iesrodeira.gal"
         }
     ],
     "require": {

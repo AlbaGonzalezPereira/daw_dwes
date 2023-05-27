@@ -31,6 +31,11 @@
       <input message="tns:getTlfTiendaIn"/>
       <output message="tns:getTlfTiendaOut"/>
     </operation>
+    <operation name="getmontante">
+      <documentation>Funci&#xF3;n que devuelve la suma (montante) de los productos de una familia. IMPORTANTE!!!!</documentation>
+      <input message="tns:getmontanteIn"/>
+      <output message="tns:getmontanteOut"/>
+    </operation>
   </portType>
   <binding name="Clases.OperacionesBinding" type="tns:Clases.OperacionesPort">
     <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
@@ -79,6 +84,15 @@
         <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://127.0.0.1/dwes06_WSDL_funcionalidad_agregada/TAREA_06/servidorSoap/servicioW.php"/>
       </output>
     </operation>
+    <operation name="getmontante">
+      <soap:operation soapAction="http://127.0.0.1/dwes06_WSDL_funcionalidad_agregada/TAREA_06/servidorSoap/servicioW.php#getmontante"/>
+      <input>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://127.0.0.1/dwes06_WSDL_funcionalidad_agregada/TAREA_06/servidorSoap/servicioW.php"/>
+      </input>
+      <output>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://127.0.0.1/dwes06_WSDL_funcionalidad_agregada/TAREA_06/servidorSoap/servicioW.php"/>
+      </output>
+    </operation>
   </binding>
   <message name="getPvpIn">
     <part name="codP" type="xsd:int"/>
@@ -107,6 +121,12 @@
     <part name="nombre" type="xsd:string"/>
   </message>
   <message name="getTlfTiendaOut">
+    <part name="return" type="xsd:string"/>
+  </message>
+  <message name="getmontanteIn">
+    <part name="codT" type="xsd:string"/>
+  </message>
+  <message name="getmontanteOut">
     <part name="return" type="xsd:string"/>
   </message>
   <service name="Clases.OperacionesService">
