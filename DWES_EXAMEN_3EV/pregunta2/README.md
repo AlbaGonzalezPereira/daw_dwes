@@ -17,14 +17,14 @@
 (Las entradas aparecen en fondo gris, las salidas calculadas en fondo azul)  
 (Enviar y Reset representan botones html)
 
-<div align = center><img src="https://github.com/AlbaGonzalezPereira/daw_dwec/blob/main/exame3ev/img/img2.PNG" alt="Palindromo" style = "width: 60%"></div>
+<div align = center><img src="https://github.com/AlbaGonzalezPereira/daw_dwes/blob/main/DWES_EXAMEN_3EV/img/pregunta2-1.PNG" alt="Palindromo" style = "width: 60%"></div>
 
-<div align = center><img src="https://github.com/AlbaGonzalezPereira/daw_dwec/blob/main/exame3ev/img/img2.PNG" alt="Palindromo2" style = "width: 60%"></div>
+<div align = center><img src="https://github.com/AlbaGonzalezPereira/daw_dwes/blob/main/DWES_EXAMEN_3EV/img/pregunta2-2.PNG" alt="Palindromo2" style = "width: 60%"></div>
 <br>
 
 **b)** Descarga de FPADISTANCIA la base de datos "pregunta2.zip" y cárgala en tu entorno de desarrollo del examen.
 
-<div align = center><img src="https://github.com/AlbaGonzalezPereira/daw_dwec/blob/main/exame3ev/img/img2.PNG" alt="Tablas bbdd" style = "width: 60%"></div>
+<div align = center><img src="https://github.com/AlbaGonzalezPereira/daw_dwes/blob/main/DWES_EXAMEN_3EV/img/Imaxe2.png" alt="Tablas bbdd" style = "width: 80%"></div>
 <br>
 
 Desarrolla una página ``"login.php"`` que permita autenticar a un usuario contra la tabla ``"usuarios"`` de la base de datos ``"pregunta2"``.
