@@ -37,4 +37,4 @@ El **nombre de usuario** será una cadena sin espacios, de 10 caracteres como m�
 * la actualización se realizará **usando AJAX** (librería Jaxon-php), sin que se tenga que recargar la página pagina1.php
 * **no se enviarán**, en una misma sesión, aquellas filas de la tabla TABLA que ya fueron enviadas.
 
-(LA PREGUNTA 3C ESTÁ SIN RESOLVER)
+(LA PREGUNTA 2C ESTÁ SIN DESARROLLAR)
