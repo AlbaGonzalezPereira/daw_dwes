@@ -24,7 +24,7 @@
 
 **b)** Descarga de FPADISTANCIA la base de datos "pregunta2.zip" y cárgala en tu entorno de desarrollo del examen.
 
-<div align = center><img src="https://github.com/AlbaGonzalezPereira/daw_dwes/blob/main/DWES_EXAMEN_3EV/img/Imaxe2.png" alt="Tablas bbdd" style = "width: 40%"></div>
+<div align = center><img src="https://github.com/AlbaGonzalezPereira/daw_dwes/blob/main/DWES_EXAMEN_3EV/img/Imaxe2.png" alt="Tablas bbdd" style = "width: 30%"></div>
 <br>
 
 Desarrolla una página ``"login.php"`` que permita autenticar a un usuario contra la tabla ``"usuarios"`` de la base de datos ``"pregunta2"``.
