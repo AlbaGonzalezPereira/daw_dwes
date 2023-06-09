@@ -121,7 +121,7 @@ $idsProducto = $objeto->getIdsP();
 $idsFamilia = $objeto->getFamilias();
 ?>
 
-<!-------------------------------PREGUNTA 3C--------------------------------------->
+<!-------------------------------PREGUNTA 3c.2 y 3c.3--------------------------------------->
 <?php
 // Si hemos enviado las preferencias la guardamos en sesiones.
 if (isset($_GET['enviar'])) {
