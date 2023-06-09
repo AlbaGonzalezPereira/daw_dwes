@@ -19,6 +19,8 @@
     ],
     "require": {
         "php2wsdl/php2wsdl": "^0.6.1",
-        "wsdl2phpgenerator/wsdl2phpgenerator": "^3.4"
+        "wsdl2phpgenerator/wsdl2phpgenerator": "^3.4",
+        "jaxon-php/jaxon-core": "~4.0",
+        "jaxon-php/jaxon-js": "*"
     }
 }

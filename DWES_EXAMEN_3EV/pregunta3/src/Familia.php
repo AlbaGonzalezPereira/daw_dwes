@@ -1,7 +1,6 @@
 <?php
 // EXAMEN 3º AVALIACION DWES
 
-
 namespace Clases;
 
 require '../vendor/autoload.php';

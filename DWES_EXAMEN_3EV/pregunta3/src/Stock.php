@@ -66,6 +66,7 @@ class Stock extends Conexion
     {
         $this->unidades = $unidades;
     }
+    
     /*
      * @param
      * @return int|null

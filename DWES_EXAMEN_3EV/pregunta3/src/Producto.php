@@ -140,6 +140,7 @@ class Producto extends Conexion
         }
         return $productos;
     }
+    
     /*
      * @param
      * @return float|null
@@ -155,5 +156,22 @@ class Producto extends Conexion
         }
         if ($stmt->rowCount() == 0) return null;
         return ($stmt->fetch(PDO::FETCH_OBJ))->pvp;
+    }
+
+    /***************************************PREGUNTA 3c.1****************************************** */
+    //Creamos una función que me devuelva los id de todas las tiendas
+    public function getAllIds(){
+        $consulta ="SELECT id FROM productos ORDER BY id";
+        $stmt = self::$conexion->prepare($consulta);
+        try {
+            $stmt->execute([]);
+        } catch (\PDOException $ex) {
+            die("Error al recuperar los ids: " . $ex->getMessage());
+        }
+        if ($stmt->rowCount() == 0) return null;
+        while ($fila = $stmt->fetch(PDO::FETCH_OBJ)) {
+            $ids[] = $fila->id;
+        }
+        return $ids;//devolvemos un array con todos los ids
     }
 }

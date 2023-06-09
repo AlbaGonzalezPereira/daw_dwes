@@ -87,4 +87,24 @@ class ClasesOperacionesService extends \SoapClient
       return $this->__soapCall('getCiudadTienda', array($id));
     }
 
+    /**
+     * Devuelve todos los ids de las tiendas o null
+     *
+     * @return Array
+     */
+    public function getIdsT()
+    {
+      return $this->__soapCall('getIdsT', array());
+    }
+
+    /**
+     * Devuelve los ids de los productos o null
+     *
+     * @return Array
+     */
+    public function getIdsP()
+    {
+      return $this->__soapCall('getIdsP', array());
+    }
+
 }

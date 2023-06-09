@@ -1,7 +1,6 @@
 <?php
 // EXAMEN 3º AVALIACION DWES
 
-
 namespace Clases;
 
 require '../vendor/autoload.php';
@@ -25,6 +24,7 @@ class Operaciones
         $producto = null;
         return $precio;
     }
+
     /**
      * Devuelve el numero de unidades que existen en una tienda de un producto
      * @soap
@@ -41,6 +41,7 @@ class Operaciones
         $stock = null;
         return $uni;
     }
+
     /**
      * Devuelve un array con los codigos de todas las familias
      * @soap
@@ -54,6 +55,7 @@ class Operaciones
         $familas = null;
         return $valores;
     }
+    
     /**
      * Devuelve un array con los nombres de los productos de una familia
      * @soap
@@ -80,6 +82,30 @@ class Operaciones
         $tienda = null;
         return $datos;
 
+    }
+
+    /**
+     * Devuelve todos los ids de las tiendas o null
+     * @soap
+     * @return string[]
+     */
+    public function getIdsT(){
+        $tienda = new Tienda();
+        $datos = $tienda->getAllIds();
+        $tienda = null;
+        return $datos;
+    }
+
+    /**
+     * Devuelve los ids de los productos o null
+     * @soap
+     * @return string[]
+     */
+    public function getIdsP(){
+        $producto = new Producto();
+        $datos = $producto->getAllIds();
+        $producto = null;
+        return $datos;
     }
 
 }

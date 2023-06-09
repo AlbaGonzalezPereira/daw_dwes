@@ -21,7 +21,7 @@ class Conexion
     public static function crearConexion()
     {
         /*************************PREGUNTA 3a)******************************** */
-        //cambiamos los parámetros para que funcione
+        //cambiamos los parámetros de user, pass y base para que funcione
         $user = "alumnado";
         $pass = "abc123.";
         $base='pregunta3';
@@ -34,5 +34,6 @@ class Conexion
             die("Error en la conexión: mensaje: " . $ex->getMessage());
         }
     }
+    
 }
 
