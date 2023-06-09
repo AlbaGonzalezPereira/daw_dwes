@@ -1,36 +1,62 @@
 <?php
 session_start(); //iniciamos sesión
+
 //require_once './include/Palindromo.php';
 spl_autoload_register(function ($clase) {
     include "./include/" . $clase . ".php";
 });
-if(!isset($_SESSION['nombre'])){//si no está definida la sesión de usuario
-    header("location: login.php");//redirigimos a la página de inicio de sesión
-    die();//finalizamos la ejecución del script
+if (!isset($_SESSION['nombre'])) { //si no está definida la sesión de usuario
+    header("location: login.php"); //redirigimos a la página de inicio de sesión
+    die(); //finalizamos la ejecución del script
 }
 
-/**************************EJERCICIO 2C***************************************** */
+/******************************EJERCICIO 2C***************************************** */
 //1.- Incluimos las librerias Jaxon
-require(__DIR__ . '/vendor/autoload.php');
+require __DIR__ . '/vendor/autoload.php';
 //require(__DIR__ . './include/Palindromo.php');
-use Jaxon\Jaxon;
 use function Jaxon\jaxon;
+use Jaxon\Jaxon;
 use Jaxon\Response\Response;
 
 /**
  * función que nos almacena los datos en las tablas de la bbdd. Registramos con CALLABLE_FUNCTION
  */
-function almacenarTabla(){
-    
+// 2. Declaramos la funcion que carga la información de la tabla palíndromos
+function almacenarTabla()
+{
     $respuesta = jaxon()->newResponse();
-    $error = false;
-    $pal= new Palindromo();
-    $pal->setUsuario("asd");
-    $pal->setFrase("asdddasassda");
-    $pal->setEsPalindromo(0);
 
-    $respuesta->alert("Todo correcto.");
-    $conProyecto=null;
+    // Comprobamos si hay algo en la tabla....
+    if (isset($_SESSION['pag1'])) {
+        require_once 'conexion.php';
+
+        foreach ($_SESSION['pag1'] as &$fila) { // importante & pues es por referencia el acceso ...
+
+            // Vamos a usar la propia tabla de palíndromos para guardar información si se transfirió la fila o no
+            if (!isset($fila[2])) {
+                $fila[2] = "enviado"; //añadimos una columna más para evitar que se envíen los datos que aparezcan como "enviado"
+                $consulta = "insert into palindromos(usuario, frase, esPalindromo) values(:u, :f, :p)"; //consulta
+                $stmt = $conProyecto->prepare($consulta); //preparamos la consulta
+
+                try {
+                    $stmt->execute([
+                        ':u' => $_SESSION['nombre'],
+                        ':f' => $fila[1],
+                        ':p' => $fila[0],
+                    ]);
+                } catch (PDOException $ex) {
+                    //$conProyecto lo coge de conexion.php (linea 8)
+                    cerrarTodo($conProyecto, $stmt); //cerramos conexión y statement
+                    $respuesta->assign("correcta", "innerHTML", "No se ha podido persistir");
+                    return $respuesta;
+                }
+            }
+        }
+        cerrarTodo($conProyecto, $stmt);//cerramos conexión y statement
+        $respuesta->assign("correcta", "innerHTML", "Se ha realizado correctamente la persistencia");
+    } else {
+        $respuesta->assign("correcta", "innerHTML", "No se ha podido persistir");
+    }
     return $respuesta;
 }
 
@@ -43,20 +69,19 @@ $jaxon->setOption('core.decode_utf8', true);
 $jaxon->setOption('core.debug.on', false);
 $jaxon->setOption('core.debug.verbose', false);
 
-
 // 4.- Registramos la función que vamos a llamar desde JavaScript
 $jaxon->register(Jaxon::CALLABLE_FUNCTION, 'almacenarTabla', ['mode' => "'asynchronous'"]);
 
-
 // 5.- El método processRequest procesa las peticiones que llegan a la página
 // Debe ser llamado antes del código HTML
-if($jaxon->canProcessRequest())  $jaxon->processRequest();
-
+if ($jaxon->canProcessRequest()) {
+    $jaxon->processRequest();
+}
 
 /*****************************PREGUNTA 2b)********************************* */
 //modificar la pagina1.php para que muestre el nombre del usuario "logeado"
 echo "HOLAAA" . "<br>";
-echo "usuario: " . $_SESSION['nombre']."<br>";
+echo "usuario: " . $_SESSION['nombre'] . "<br>";
 echo "FIN";
 ?>
 
@@ -67,7 +92,6 @@ echo "FIN";
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="author" content="Alba Gonzalez">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="script.js" defer></script>
     <title>Tarea 2a - Examen 3EV</title>
 </head>
 <body style="font-family: monospace">
@@ -78,7 +102,9 @@ echo "FIN";
                 <input type="text" id="frase" name="frase" />
             </p>
             <p id="error">
-            <?php
+
+<?php
+//si se ha definido enviar y la frase está vacía
 if (isset($_GET['enviar'])) {
     if (empty($_GET['frase'])) {
         echo "<h3>Debe introducir una frase!!</h3>";
@@ -90,71 +116,55 @@ if (isset($_GET['enviar'])) {
         <button id="borrar" type="" name="borrar">Reset</button>
         <!-------------------PREGUNTA 2c------------------------->
         <!--Añadimos botón persistir-->
-        <button id="persistir" name="persistir" onClick="almacenar();return false;">Persistir</button>
-
-        <p id = "correcta"></p>
+        <button id="persistir" name="persistir" onClick="jaxon_almacenarTabla();return false;">Persistir</button>
+        <p id = "correcta"></p> <!--aquí sacamos los datos al darle al botón persistir-->
     </div>
         </form>
-        <?php
-//si la sesión no está definida
-if (!isset($_SESSION['pag1'])) {
-    $asociat = []; //creamos el array asociativo
-} else {
-    $asociat = $_SESSION['pag1']; //y sino lo igualamos a la sesión
-}
-//unset($_SESSION);
 
-if (isset($_GET['enviar'])) {
-    if (empty($_GET['frase'])) {
-        echo "<h3>Debe introducir una frase!!</h3>";
-    } else {
-        $frase = $_GET['frase'];
-    }
+<?php
 
-}
-
+/*******************************Pregunta 2a)********************************* */
+//si se le ha dado a enviar y la frase no está vacía
 if (isset($_GET['enviar'])) {
     if (!empty($_GET['frase'])) {
         $regex = "/^[a-z ]+$/"; //expresión regular que valida la frase
-        $frase = $_GET['frase'];
+        $frase = $_GET['frase']; //guardamos en la variable la frase
         $trozoFrase = preg_split("/\s+/", $frase); //cortamos la frase para sacar los espacios
         $fraseSinEsp = implode($trozoFrase); //unimos la frase
         $fraseReves = strrev($fraseSinEsp); //le damos la vuelta a la frase
         $reves = strrev($frase); //invertimos la frase
-        $esPal = false; //declaramos palíndromo
+        $esPal = 0; //declaramos palíndromo
         //$asociat = array($esPal,$frase);
         if (preg_match($regex, $frase)) { //comprobamos la frase
             echo "<p>Escrita al revés: " . $reves . "</p>";
             if ($fraseReves == $fraseSinEsp) {
                 echo "<p>Es un palíndromo</p>";
-                $esPal = true;
+                $esPal = 1; //porque lo guardamos así en la bbdd
             } else {
                 echo "<p>No es un palíndromo</p>";
             }
-            $asociat[$frase] = $esPal; //creamos el array asociativo
+            //guardamos un array dentro de $_SESSION y cada array contiene dos valores (llave y valor)
+            $_SESSION['pag1'][] = [$esPal, $frase]; // para almacenar múltiples elementos dentro de $_SESSION['pag1'].
         }
 
         echo "<br><p>Frases probadas hasta el momento: </p>";
         echo "<table>";
-        echo "<tr><th>Palíndromo</th><th>Frase</th>";//ponemos encabezados de tabla en negrita
-        foreach ($asociat as $it => $value) { //recorremos el array asociativo
-            echo "<tr>";
-            echo "<td>";
-            //comprobamos palíndromos para que escriba Palíndromo o No
-            if ($value == true) {
-                echo "Palíndromo";
-            } else {
-                echo "No";
-            }
+        echo "<tr><th>Palíndromo</th><th>Frase</th></tr>"; //ponemos encabezados de tabla en negrita
 
-            echo "</td><td>";
-            echo $it . "</td></tr>";
+        //Para mostrar la tabla y que ponga un No o Palíndromo, dependiendo del caso
+        if (isset($_SESSION['pag1'])) {
+            foreach ($_SESSION['pag1'] as $fila) {
+                echo "<tr>";
+                echo "<td>";
+                echo $fila[0] == 0 ? "No" : "Palindromo"; 
+                echo "</td>";
+                echo "<td>" . $fila[1] . "</td>";
+                echo "</tr>";
+            }
         }
         echo "</table>";
     }
 }
-
-$_SESSION['pag1'] = $asociat; //guarda en $_SESSION lo que tenemos en el array (frase, palíndromo)
 
 //cando le damos a borrar, cerramos la sesión. IMPORTANTE, ponerlo abajo
 if (isset($_GET['borrar'])) {

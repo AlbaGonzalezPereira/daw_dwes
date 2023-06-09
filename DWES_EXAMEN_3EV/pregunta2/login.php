@@ -32,7 +32,7 @@ if (isset($_POST['login'])) {
     //declaramos la expresión regular:
     //esta es la expresión regular que se pide, sin embargo no valdría para comprobar, ya que la bbdd tiene números
     //$regex = "/^[a-záéíóúüñÁÉÍÓÚÜÑ]{1,10}$/i";
-    $regex = "/^[a-záéíóúüñÁÉÍÓÚÜÑ]{1,9}[1-9]$/i";//para que nos coja el nombre de usuario así: usuario1, usuario2,...
+    $regex = "/^[a-zA-ZñÑ]{1,9}[1-9]$/";//para que nos coja el nombre de usuario así: usuario1, usuario2,...
     if (preg_match($regex,$nombre) == false || strlen($pass) == 0) {
         error("Error, El nombre o la contraseña no pueden contener solo espacios en blancos o más de 10 caracteres");
     }

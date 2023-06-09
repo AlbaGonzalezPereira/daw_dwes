@@ -26,9 +26,17 @@ try {
 //     return $producto;
 
 // }
+
+/**
+ * Función que cierra la conexión (se pasa por referencia, se puede cerrar desde cualquier sitio)
+ */
 function cerrar(&$con){
     $con = null;
 }
+
+/**
+ * Función para cerrar la conexión y la consulta (se pasa por referencia)
+ */
 function cerrarTodo(&$con, &$st){
     $st = null;
     $con = null;
