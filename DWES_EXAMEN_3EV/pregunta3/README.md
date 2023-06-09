@@ -30,7 +30,17 @@ Dada la siguiente aplicación que ofrece y utiliza un servicio **SOAP** en PHP (
 
 * **c.1)** Deben validarse los datos, como mínimo en el php. Los rangos válidos de dichos códigos se obtengan mediante las oportunas consultas a la base de datos.
 
+
 * **c.2)** Además cuando se haga clic en el botón "Enviar", se mostrará la ciudad para el código de tienda introducido usando el servicio SOAP añadido en b).
+```php
+/*******************************Pregunta 3c.1************************************************** */
+$ciudad = $objeto->getCiudadTienda($codTienda); //usamos ya el código declarado
+if (isset($_GET['enviar'])) {
+    // funcion getCiudadTienda ---------------------------------------------------------------------
+    echo "<br>La ciudad de la tienda con id $codTienda es $ciudad";
+}
+//session_destroy();//comprobamos
+```
 
 * **c.3)** Cuando el usuario haga clic en el botón "Enviar", la página se recargará mostrando la información solicitada y manteniendo el valor de los datos introducidos en el los campos del formulario (mantener la sesión).
 

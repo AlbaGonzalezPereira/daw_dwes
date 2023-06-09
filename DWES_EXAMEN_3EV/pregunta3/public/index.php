@@ -217,7 +217,7 @@ foreach ($codigoFam as $k => $v) {
 </form>
 
 <?php
-/*******************************Pregunta 3c.1************************************************** */
+/*******************************Pregunta 3c.2************************************************** */
 $ciudad = $objeto->getCiudadTienda($codTienda); //usamos ya el código declarado
 if (isset($_GET['enviar'])) {
     // funcion getCiudadTienda ---------------------------------------------------------------------
