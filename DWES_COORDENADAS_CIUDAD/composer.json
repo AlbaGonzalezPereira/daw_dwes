@@ -1,0 +1,24 @@
+{
+    "name": "jaxon/alba",
+    "description": "EjerciciosCoordenadas",
+    "type": "project",
+    "license": "gnu/gpl",
+    "config": {
+        "optimize-autoloader": true
+    },
+    "autoload": {
+        "psr-4": {
+            "Clases\\": "src"
+        }
+    },
+    "authors": [
+        {
+            "name": "Alba González",
+            "email": "albagp@gmail.com"
+        }
+    ],
+    "require": {
+        "jaxon-php/jaxon-core": "~4.0",
+        "jaxon-php/jaxon-js": "*"
+    }
+}
