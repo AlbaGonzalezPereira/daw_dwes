@@ -10,7 +10,7 @@ class Producto extends Conexion  {
     private $nombre;
     private $nombre_corto;
     private $pvp;
-    private $famila;
+    private $familia;
     private $descripcion;
     private $idTienda;
 
@@ -81,15 +81,15 @@ class Producto extends Conexion  {
     /**
      * @return mixed
      */
-    public function getFamila() {
+    public function getFamilia() {
         return $this->famila;
     }
 
     /**
-     * @param mixed $famila
+     * @param mixed $familia
      */
-    public function setFamila($famila)  {
-        $this->famila = $famila;
+    public function setFamilia($familia)  {
+        $this->familia = $familia;
     }
 
     /**
@@ -104,6 +104,20 @@ class Producto extends Conexion  {
      */
     public function setDescripcion($descripcion) {
         $this->descripcion = $descripcion;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getIdTienda()  {
+        return $this->idTienda;
+    }
+
+    /**
+     * @param mixed $idTienda
+     */
+    public function setIdTienda($idT)  {
+        $this->idTienda = $idT;
     }
 
     /*
@@ -145,17 +159,19 @@ class Producto extends Conexion  {
      * función que inserta datos en la tabla productos 
      * @param - $datos - datos a insertar en la consulta
      */
-    public function insertarProductos($datos){
-        $consulta = "INSERT INTO productos (nombre, nombre_corto, pvp, familia, descripcion) VALUES (:n, :nc, :p, :f, :d)";
+    public function insertarProductos(){
+        $consulta = "INSERT INTO productos (nombre, nombre_corto, pvp, familia, descripcion, id_tienda) VALUES (:n, :nc, :p, :f, :d, :it)";
         $stmt = self::$conexion->prepare($consulta);
 
         try {
             $stmt->execute([
-                ':n' =>$this->datos['nombre'],
-                ':nc'=>$this->datos['nombre_corto'],
-                ':p' =>$this->datos['pvp'],
-                ':f' =>$this->datos['familia'],
-                ':s' =>$this->datos['descripcion']
+                ':n' =>$this->nombre,
+                ':nc'=>$this->nombre_corto,
+                ':p' =>$this->pvp,
+                ':f' =>$this->familia,
+                ':d' =>$this->descripcion,
+                ':it' =>$this->idTienda
+
                 ]);
             echo "Los datos se han insertado correctamente.";
         } catch (\PDOException $ex) {//si da error

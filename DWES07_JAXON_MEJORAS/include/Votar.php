@@ -101,8 +101,27 @@ function pintarEstrellas($c, $p) {
     return $resp;//devuelve la respuesta jaxon
 }
 
+/**
+ * Función que dibuja todos los votos y la cantidad que ha hecho un usuario
+ */
+function misVotos($i){
+    $voto = new Voto();
+    $miVotacion = $voto->verVotos($i);
+    $voto = null;
+
+    $resp = jaxon()->newResponse();//creamos una respuesta jaxon
+    $registro ='';
+    $registro.='<table><tr><th>Producto</th><th>Votación</th></tr>';
+    foreach($miVotacion as $fila){ 
+        $registro.="<tr><td>$fila[0]</td><td>$fila[1]</td></tr>"; //para que nos coja el voto ($fila[0]) y la cantidad ($fila[1])
+    }
+    $resp->assign("votos", "innerHTML", $registro);//modifica el html poniendo el número de estrellas
+    return $resp;
+}
+
 //se llaman a las funciones desde votar.js
 $jaxon->register(Jaxon::CALLABLE_FUNCTION, 'miVoto');
 $jaxon->register(Jaxon::CALLABLE_FUNCTION, 'miNoVoto');
 $jaxon->register(Jaxon::CALLABLE_FUNCTION, 'pintarEstrellas');
+$jaxon->register(Jaxon::CALLABLE_FUNCTION, 'misVotos');
 

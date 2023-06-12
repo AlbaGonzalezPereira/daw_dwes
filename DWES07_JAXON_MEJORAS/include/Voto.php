@@ -133,10 +133,15 @@ class Voto extends Conexion {
         $stmt = self::$conexion->prepare($consulta); //ejecuta la consulta
         
         try {
-            $stmt->execute([':i' =>$idU]);
+            $stmt->execute([':i'=>$idU]);
         } catch (\PDOException $ex) {
             die("Error al recuperar los productos de la tienda" . $ex->getMessage());// muestra un mensaje de error
         }
-        return $stmt;//devuelve la consulta preparada
+        //return $stmt;//devuelve la consulta preparada
+        if ($stmt->rowCount() == 0) return null;
+        while ($fila = $stmt->fetch(PDO::FETCH_OBJ)) {
+            $votos[] = [$fila->nombre,$fila->cantidad];
+        }
+        return $votos;//devolvemos un array con todos los productos votados y la cantidad
     }
 }

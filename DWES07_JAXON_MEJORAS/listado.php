@@ -74,14 +74,16 @@ if($jaxon->canProcessRequest())  $jaxon->processRequest();
 <body style="background:#00bfa5;">
     <div class="float float-right d-inline-flex mt-2">
         <i class="fas fa-user mr-3 fa-2x"></i>
-        <input type="text" size='10px' value="<?php echo $usu; ?>" class="form-control
-    mr-2 bg-transparent text-white font-weight-bold" disabled>
-        <button class="btn btn-warning mr-2">Mis votos</button>
+        <input type="text" size='10px' value="<?php echo $usu; ?>" class="form-control mr-2 bg-transparent text-white font-weight-bold" disabled>
+        <!--sacar los votos de un usuario al darle al botón-->
+        <?php echo "<button class=\"btn btn-warning mr-2\" onClick=\"jaxon_misVotos('{$usu}');return false;\">Mis votos</button>";?>
+        <a href="crear.php" class="btn btn-warning mr-2">Crear</a>
         <a href="cerrar.php" class="btn btn-warning mr-2">Salir</a>
         
     </div>
     <br>
     <h4 class="container text-center mt-4 font-weight-bold">Productos onLine</h4>
+    <div id="votos"></div>
     <div class="container mt-3">
         <table class="table table-striped table-dark">
             <thead>
@@ -94,6 +96,7 @@ if($jaxon->canProcessRequest())  $jaxon->processRequest();
             </thead>
             <tbody>
                 <?php
+                
                 while ($item = $todos->fetch(PDO::FETCH_OBJ)) {
                     echo "<tr class='text-center'>\n";
                     echo "<th scope='row'>{$item->id}</th>\n";
@@ -107,9 +110,18 @@ if($jaxon->canProcessRequest())  $jaxon->processRequest();
                     }
                     echo "</select>\n";
                     echo "</td><td>";
-                    echo "<button class='btn btn-info' onclick=\"envVoto('{$usu}','{$item->id}')\">Votar</button>";
+                    //echo "<button class='btn btn-info' onclick=\"envVoto('{$usu}','{$item->id}')\">Votar</button>";
                     //creamos un botón que nos permitirá borrar el voto y hacer reecuento de las estrellas. AÑADIDO
-                    echo "<button class='btn btn-danger mx-4' onclick=\"borrarVoto('{$usu}','{$item->id}')\">Borrar</button>";
+                    //echo "<button class='btn btn-danger mx-4' onclick=\"borrarVoto('{$usu}','{$item->id}')\">Cambiar</button>";
+                    //si el usuario ya votó un producto, que aparezca un botón: "Cambiar" que le permita modificar su voto para ese producto
+                    $voto = new Voto();
+                    $puede = $voto->puedeVotar($usu, $item->id);
+                    $voto = null;
+                    if(!$puede){
+                        echo "<button class='btn btn-danger mx-4' onclick=\"borrarVoto('{$usu}','{$item->id}')\">Cambiar</button>";
+                    }
+                        echo "<button class='btn btn-info' onclick=\"envVoto('{$usu}','{$item->id}')\">Votar</button>";
+                    
                     echo "</td>\n";
                     echo "</tr>\n";
                 }
